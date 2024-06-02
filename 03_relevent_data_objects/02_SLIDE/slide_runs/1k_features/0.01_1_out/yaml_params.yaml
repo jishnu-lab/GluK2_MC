@@ -1,0 +1,17 @@
+x_path: ../03_relevent_data_objects/02_SLIDE/X_1k.csv
+y_path: ../03_relevent_data_objects/02_SLIDE/Y.csv
+out_path: ../03_relevent_data_objects/02_SLIDE/slide_runs/1k_features/0.01_1_out/
+delta: 0.01
+lambda: 1
+spec: 0.22
+y_factor: yes
+y_levels:
+- -1
+- 0
+- 1
+eval_type: corr
+SLIDE_iter: 10000
+SLIDE_top_feats: 20
+CViter: 10
+sampleCV_K: 4
+do_interacts: yes

@@ -1,0 +1,62 @@
+### Sleuth : variable description ----
+## Descrption of RScript variable
+## Adapted from Isha (ishamehta@pitt.edu) at cigcore at Department of Immunology in University of Pittsburgh
+## Written by Swapnil (swk25@pitt.edu)
+## To run Sleuth on outputs of kallisto. Assumes that R package "sleuth" is installed & loaded
+## 30 May 2024
+##
+## proj_path:   filepath to the project directory
+## dataDir:     filepath to the data directory 
+## metadataPath:Path to the .csv file with sample information. Must have column containing
+##              name/identifier of each sample); conditions/treatments given in other columns
+## skipLines:   Number of lines to be skipped while reading metaData file. 
+## sampleCol:   Name of the column in metaData file containing sample names.
+## factorCol:     Name(s) of the column(s) in metaData containing the all the factors (multifactor) for DE analysis.
+## factorOfInt: Name(s) of the column(s) in metaData containing the factors for which DE analysis output is needed.
+## refLevel:    Reference level to use for the factor in factors
+## mappingDF:   data frame that stores gene annotations for each transcript/read;
+##              must have column "target_id" containing the identifiers for each
+##              transcript
+## aggCol:      must be the name of one of the columns of "mappingDF"; aggregates 
+##              targets if p-value aggregation is used
+## filter_target_id: if non-NULL, sleuth_prep runs with target_id/transcript_id filter
+## sleuth_test: specify the test_type to use for the analysis. "wt" for Wald test (default) or "lrt" for Likelihood Ratio test.
+## geneList:    (default NULL) a list of vectors, each vector containing the labels 
+##              of genes to highlight in the volcano plots. The names of this list
+##              should be of the form "xxxyyy" where xxx is the name of the factor 
+##              and yyy is the variable level/group, e.g., "GroupsT1L"
+## drop_dupGenes:   if TRUE, we drop duplicate genes from our diff. exp. lists (i.e.,
+##                  if multiple transcripts map to a gene, drop the entries for all but
+##                  one of the transcripts). Keep transcript with lowest qval.
+## qval:  threshold for significance in DEG analysis.
+## bval: threshold for log2 fold change. The default is 0.
+## biomart:     the name of the BioMart database to use for gene annotation
+## dataset:     the name of the dataset to use for gene annotation
+## runReactome: if TRUE, run Reactome pathway analysis
+## runKEGG:     if TRUE, run KEGG pathway analysis
+## pathway_pvalueCutoff:  p-value cutoff for pathway analysis
+
+## Overall project path
+proj_path: "../03_relevent_data_objects/01_transcriptome/MrgprgDdtr"
+dataDir: "../03_relevent_data_objects/01_transcriptome/MrgprgDdtr/mapped"
+metadataPath: "../03_relevent_data_objects/01_transcriptome/MrgprgDdtr.csv"
+## Variables for sleuth (see above for details)
+skipLines: 0
+sampleCol: "sampleName"
+factorCol: "Groups"
+factorOfInt: NULL
+refLevel: "WT"
+filter_target_id: NULL
+sleuth_test: "wt"
+geneList: NULL
+drop_dupGenes: FALSE
+## Setting up cutoffs for DE analysis
+qval: 0.05
+bval: 0
+## Gene annotation parameters for useMart function in ORA/ PATHWAY ANALYSIS
+biomart: "ensembl"
+dataset: "mmusculus_gene_ensembl"
+## Pathway analysis parameters
+runReactome: TRUE
+runKEGG: FALSE
+pathway_pvalueCutoff: 0.05
