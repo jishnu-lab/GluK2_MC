@@ -1,0 +1,23 @@
+---
+x_path: ../03_relevent_data_objects/02_SLIDE/X_1k.csv
+y_path: ../03_relevent_data_objects/02_SLIDE/Y.csv
+out_path: ../03_relevent_data_objects/02_SLIDE/slide_runs/1k_features
+delta:
+  - 0.01
+lambda:
+  - 1
+spec: 0.22
+y_factor: TRUE # TRUE for discrete, FALSE for continuous
+y_levels:
+  - -1
+  - 0
+  - 1
+eval_type: corr # corr, auc (for binary)
+SLIDE_iter: 10000
+SLIDE_top_feats: 20
+# Inputs for nested CV (nrep: outer loop-- #times benchCV2 runs, rep_cv: inner loop-- benchCV2)
+CViter: 10
+sampleCV_K: 20
+rep_cv: 10
+# Linear(FALSE) or pairwise interaction (TRUE)
+do_interacts: TRUE
