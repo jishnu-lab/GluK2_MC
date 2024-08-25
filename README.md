@@ -19,8 +19,6 @@ Small molecule agonism of the glutamate receptor GluK2 expressed by dermal mast 
 
 ## Prerequisites
 
-List any prerequisites or dependencies that need to be installed.
-
 - doParallel
 - dplyr
 - [SLIDE](https://github.com/jishnu-lab/SLIDE)
